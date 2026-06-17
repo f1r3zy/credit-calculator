@@ -1,0 +1,10 @@
+Arhitectura aplicației:
+- Frontend: HTML5, CSS3 (Bootstrap 5), JavaScript vanilla
+- Backend: PHP 8.2, fara framework, arhitectura MVC
+- Baza de date: MySQL/MariaDB
+- Componente:
+  - Router: parseaza URL si apeleaza controller-ul
+  - Controllers: Auth, Calculator, Page, Simulation
+  - Services: CreditCalculator, AmortizationSchedule
+  - Models: User, Simulation, ReferenceRate
+  - Core: Request, Response, Validator, Auth, Csrf, Logger
