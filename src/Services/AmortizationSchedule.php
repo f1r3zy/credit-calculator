@@ -7,16 +7,6 @@ use InvalidArgumentException;
 
 class AmortizationSchedule
 {
-    /**
-     * genereaza graficul cu rate anuale diferite pe fiecare luna.
-     * @param float $principal
-     * @param array $annualRates array cu rata anuala pentru fiecare luna (indexat 0..n-1)
-     * @param int $totalMonths
-     * @param int $graceMonths
-     * @param string $graceType 'principal' sau 'total'
-     * @param string $method 'annuity' sau 'linear'
-     * @param string $startDate
-     */
     public static function generateFlexible(
         float $principal,
         array $annualRates,
@@ -48,10 +38,9 @@ class AmortizationSchedule
 
             if ($i < $graceMonths) {
                 if ($graceType === 'total') {
-                    $interest = 0;
                     $principalPaid = 0;
                     $totalPayment = 0;
-                    $remaining += round($remaining * $monthlyRate, 2);
+                    $remaining += $interest;
                 } else {
                     $principalPaid = 0;
                     $totalPayment = $interest;
