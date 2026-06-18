@@ -55,7 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Login form
     const loginForm = document.getElementById('login-form');
     if (loginForm) {
         loginForm.addEventListener('submit', async (e) => {
@@ -75,7 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Register form
     const registerForm = document.getElementById('register-form');
     if (registerForm) {
         registerForm.addEventListener('submit', async (e) => {
@@ -197,10 +195,16 @@ async function exportCSV() {
 
 async function saveSimulation() {
     const result = window._lastResult;
-    if (!result) return alert('Calculează mai întâi.');
+    if (!result) {
+        showToast('Calculează mai întâi.', 'error');
+        return;
+    }
     const type = document.querySelector('select[name="type"]')?.value;
     const csrfToken = document.querySelector('input[name="csrf_token"]')?.value;
-    if (!csrfToken) { alert('Token CSRF lipsă. Reîncarcă pagina.'); return; }
+    if (!csrfToken) {
+        showToast('Token CSRF lipsă. Reîncarcă pagina.', 'error');
+        return;
+    }
     try {
         const resp = await fetch('/api/simulations', {
             method: 'POST',
@@ -213,9 +217,28 @@ async function saveSimulation() {
             })
         });
         const data = await resp.json();
-        if (data.error) { alert(data.error); return; }
-        alert('Simulare salvată!');
-    } catch (e) { alert('Eroare la salvare: ' + e.message); }
+        if (data.error) {
+            showToast(data.error, 'error');
+            return;
+        }
+        showToast('Simulare salvată!');
+    } catch (e) {
+        showToast('Eroare la salvare: ' + e.message, 'error');
+    }
+}
+
+function showToast(message, type = 'success') {
+    const existing = document.querySelector('.custom-toast');
+    if (existing) existing.remove();
+    const toast = document.createElement('div');
+    toast.className = 'custom-toast' + (type === 'error' ? ' error' : '');
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    requestAnimationFrame(() => toast.classList.add('show'));
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
 }
 
 async function earlyRepayment() {
