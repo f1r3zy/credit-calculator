@@ -19,10 +19,10 @@
       <div class="col-lg-3 col-md-4 mb-3 mb-md-0">
         <h6 class="footer-heading">Resurse</h6>
         <ul class="footer-links list-unstyled">
-          <li><a href="#">Despre noi</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Termeni si conditii</a></li>
-          <li><a href="#">Confidentialitate</a></li>
+          <li><a href="/despre-noi">Despre noi</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/termeni-si-conditii">Termeni si conditii</a></li>
+          <li><a href="/confidentialitate">Confidentialitate</a></li>
         </ul>
       </div>
       <div class="col-lg-3 col-md-4">

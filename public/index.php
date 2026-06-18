@@ -35,21 +35,20 @@ $router->add('GET', '/register', 'App\Controllers\PageController@register');
 $router->add('GET', '/profile', 'App\Controllers\PageController@profile');
 $router->add('GET', '/simulations', 'App\Controllers\PageController@simulations');
 $router->add('GET', '/share/{token}', 'App\Controllers\PageController@share');
-
 $router->add('POST', '/api/register', 'App\Controllers\AuthController@register');
 $router->add('POST', '/api/login', 'App\Controllers\AuthController@login');
 $router->add('POST', '/api/logout', 'App\Controllers\AuthController@logout');
 $router->add('GET', '/api/me', 'App\Controllers\AuthController@me');
-
 $router->add('POST', '/api/calculate', 'App\Controllers\CalculatorController@calculate');
 $router->add('POST', '/api/export-csv', 'App\Controllers\CalculatorController@exportCSV');
-
 $router->add('POST', '/api/early-repayment', 'App\Controllers\CalculatorController@earlyRepayment');
-
 $router->add('POST', '/api/simulations', 'App\Controllers\SimulationController@save');
 $router->add('GET', '/api/simulations', 'App\Controllers\SimulationController@list');
 $router->add('GET', '/api/simulations/{id}', 'App\Controllers\SimulationController@show');
-
+$router->add('GET', '/despre-noi', 'App\Controllers\PageController@despreNoi');
+$router->add('GET', '/contact', 'App\Controllers\PageController@contact');
+$router->add('GET', '/termeni-si-conditii', 'App\Controllers\PageController@termeni');
+$router->add('GET', '/confidentialitate', 'App\Controllers\PageController@confidentialitate');
 $router->add('GET', '/api/reference-rates/latest', 'App\Controllers\CalculatorController@latestRate');
 
 $request = new Request();

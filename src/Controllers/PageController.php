@@ -69,4 +69,32 @@ class PageController
         include __DIR__ . '/../../views/calculator.php'; 
         return new Response(200, ob_get_clean());
     }
+
+    public function despreNoi(): Response
+{
+    ob_start();
+    include __DIR__ . '/../../views/despre-noi.php';
+    return new Response(200, ob_get_clean());
+}
+
+public function contact(): Response
+{
+    ob_start();
+    include __DIR__ . '/../../views/contact.php';
+    return new Response(200, ob_get_clean());
+}
+
+public function termeni(): Response
+{
+    ob_start();
+    include __DIR__ . '/../../views/termeni.php';
+    return new Response(200, ob_get_clean());
+}
+
+public function confidentialitate(): Response
+{
+    ob_start();
+    include __DIR__ . '/../../views/confidentialitate.php';
+    return new Response(200, ob_get_clean());
+}
 }
